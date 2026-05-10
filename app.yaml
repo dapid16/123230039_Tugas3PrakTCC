@@ -3,7 +3,7 @@ service: frontend-123230039
 
 handlers:
   # Ini buat nanganin file statis kayak CSS, JS, Gambar
-  - url: /(.*\..+)$
+  - url: /
     static_files: build/\1
     upload: build/(.*\..+)$
 
