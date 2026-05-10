@@ -2,14 +2,17 @@ runtime: nodejs20
 service: frontend-123230039
 
 handlers:
-  - url: /
-    static_files: dist/index.html
-    upload: dist/index.html
+  # Ini buat nanganin file statis kayak CSS, JS, Gambar
+  - url: /(.*\..+)$
+    static_files: build/\1
+    upload: build/(.*\..+)$
 
-  - url: /(.*)
-    static_files: dist/\1
-    upload: dist/(.*)
-    
+  # Ini buat nanganin rute React supaya nggak error 404
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+
+# Tambahkan ini supaya hemat (untuk testing)
 automatic_scaling:
   target_cpu_utilization: 0.65
   min_instances: 0
