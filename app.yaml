@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: default
+service: frontend-123230039
 
 # Tambahkan ini supaya hemat (untuk testing)
 automatic_scaling:
