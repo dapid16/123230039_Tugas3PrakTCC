@@ -16,6 +16,7 @@ function App() {
   const fetchNotes = async () => {
     try {
       const response = await axios.get(API_URL);
+      console.log("Data dari backend:", response.data);
       setNotes(response.data);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -28,11 +29,13 @@ function App() {
     fetchNotes();
   }, []);
 
-  const filteredNotes = notes.filter(
-    (note) =>
-      note.judul.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      note.isi.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredNotes = Array.isArray(notes) 
+    ? notes.filter(
+        (note) =>
+          note.judul?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          note.isi?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
   const handleEdit = (note) => {
     setEditingNote(note);
