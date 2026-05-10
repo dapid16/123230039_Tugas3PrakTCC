@@ -1,1 +1,0 @@
-# 123230039_tugas2_praktcc
